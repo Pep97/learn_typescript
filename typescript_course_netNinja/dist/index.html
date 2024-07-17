@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <h1>Pizza Palace Menu Editor</h1>
+        <a href="/create.html" class="btn">Add new Pizza</a>
+    </nav>
+
+
+    <main class="root wrap">
+        
+
+        <br><br>
+
+        <p>set up parcel:</p>
+        <a href="https://netninja.dev/courses/typescript-masterclass/lectures/50287868">video tutorial</a>
+        <br>
+        <a href="https://parceljs.org">website</a>
+        <p>parcel is a bundler and will compile your TS into JS</p>
+
+        <br><br>
+
+        <p>you installed json gloabally -> npm install -g json-server</p>
+        <p>then run this to create a local server with an API endpoint that we can use
+            to interact with the pizza data inside db.json ->  json-server --watch db.json</p>
+
+        <br><br>
+
+    
+        <button onclick="changeButton()" class="check-index-ts">Check out index.ts</button>
+        <div id="content" style="display: none"></div>
+
+    </main>
+
+    <script src="/index.b71e74eb.js" defer=""></script>
+    <script src="/index.0aafb60d.js" defer=""></script>
+    <script src="/index.8090f12d.js" defer=""></script>
+
+    <!--  TAGs for compling through terminal
+        <script src="dist/index-web.js"></script>
+        <script src="dist/writer-csv.js"></script>
+        <script src="dist/index.js"></script>
+     -->
+    <script>function changeButton() {
+    var button = document.querySelector(".check-index-ts");
+    if (button.textContent === "Check out index.ts") {
+        button.textContent = "Hide index.ts";
+        document.getElementById("content").style.display = "block";
+    } else {
+        button.textContent = "Check out index.ts";
+        document.getElementById("content").style.display = "none";
+    }
+}
+fetch("src/index.ts").then((response)=>response.text()).then((data)=>{
+    const lines = data.split("\n");
+    const contentDiv = document.getElementById("content");
+    lines.forEach((line)=>{
+        const p = document.createElement("p");
+        p.textContent = line;
+        contentDiv.appendChild(p);
+    });
+});
+
+</script>
+</body>
+</html>
